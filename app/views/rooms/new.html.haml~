@@ -1,0 +1,63 @@
+%h1 New room
+
+
+= form_tag rooms_path do
+
+  ชื่อห้อง
+  %input{:name => 'droom[roomname]', :type => "text"}/
+  %br
+  ความจุของห้อง (คน)
+  %input{:name => 'droom[amount]', :type => "text"}/
+  %br
+  ประเภทของห้อง
+  %select{:name => "droom[room_type]"}
+    %option{:value => "auditorium"} ห้องประชุม
+    %option{:value => "classroom"} ห้องเรียน
+ 
+  %br
+  - @day_list.each do |day|
+    = day
+    %br
+    - @box_times.each do |time|
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      = time
+      = hidden_field_tag "#{day}[#{time}]",0
+      = check_box_tag "#{day}[#{time}]",1
+    %br 
+  %br
+  รายการอุปรณ์ภายในห้อง: 
+  %br
+  เครื่องขยายเสียง (amplifier)
+  %input{:name => 'tool[amplifier]', :type => "text"}/
+  %br
+  ไมโครโฟน (microphone)
+  %input{:name => 'tool[microphone]', :type => "text"}/
+  %br
+  เครื่องคอมพิวเตอร์ (computer)
+  %input{:name => 'tool[computer]', :type => "text"}/
+  %br
+  โอเวอร์เฮด โปรเจกเตอร์ (overhead_projector)
+  %input{:name => 'tool[overhead_projector]', :type => "text"}/
+  %br
+  เครื่องฉาย LCD (lcd_projector)
+  %input{:name => 'tool[lcd_projector]', :type => "text"}/
+  %br
+  โทรทัศน์ (television)
+  %input{:name => 'tool[television]', :type => "text"}/
+  %br
+  เครื่องเล่นและบันทึกเสียง
+  %input{:name => 'tool[voice_recorder]', :type => "text"}/
+  %br
+  เครื่องเล่นวิดีโอเทป (video_recorder)
+  %input{:name => 'tool[video_recorder]', :type => "text"}/
+  %br
+  เครื่องวิชั่วไรเซอร์
+  %input{:name => 'tool[visualizer]', :type => "text"}/
+  %br
+  ลำโพง (loudspeaker)
+  %input{:name => 'tool[loudspeaker]', :type => "text"}/
+  %br
+  %br
+  = submit_tag 'เพิ่มห้องใหม่'
+
+= link_to 'Back', staffs_path

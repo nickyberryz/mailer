@@ -1,0 +1,10 @@
+%h3 กรุณาเลือกรูปภาพสำหรับบันทึกเข้าในระบบ
+
+= form_tag welcomes_path ,:multipart=> true do
+
+  = file_field :welcome,:img
+
+  = submit_tag 'เพิ่มรูป'
+
+
+= link_to 'Back', welcomes_path

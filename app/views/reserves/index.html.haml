@@ -1,0 +1,34 @@
+%h3 ข้อมูลการจองที่มีทั้งหมดในระบบ
+
+%table{:border => "1" ,:width => "700px"}
+  %tr
+    %th วันที่จอง
+    %th เวลาเริ่ม
+    %th เวลาสิ้นสุด
+    %th ชื่อห้อง
+    %th สถานะ
+    %th พิจารณาการจอง
+
+  - @reserves.each do |reserf|
+    %tr
+      %td= reserf.date_to_reserve
+      %td= reserf.start_time
+      %td= reserf.finish_time
+      %td= reserf.roomname
+      - if reserf.status == "nonconsidered"
+        %td= "ยังไม่พิจารณา"
+      - elsif reserf.status == "confirm"
+        %td= "อนุมัติแล้ว"
+      - else
+        %td= "ไม่อนุมัติ"
+      - if reserf.status == "nonconsidered"
+        %td= link_to "พิจารณาการจองห้อง #{reserf.roomname}", reserf_path(reserf)
+      - else
+        %td= link_to "ดูข้อมูลการจองห้อง #{reserf.roomname}", reserf_path(reserf)
+      
+
+%br
+
+
+= link_to 'ปริ๊นฟอร์มการจองที่อนุมัติแล้วทั้งหมด', forms_path
+= link_to "Report", {:action => "pdfreport", :controller => "forms",:format => :pdf}, :target => '_blank'

@@ -1,0 +1,82 @@
+%h3 ข้อมูลตามตารางสอนของห้อง : #{@droom.roomname} ความจุ : #{@droom.amount} คน
+
+%table{:border => "1" }
+  %thead
+    %tr
+      %th วัน/เวลา
+      %th 8.00-9.30
+      %th 9.30-11.00
+      %th 11.00-12.30
+      %th 12.30-13.00
+      %th 13.30-15.00
+      %th 15.00-16.30
+      %th 16.30-18.00
+      %th 18.00-21.00
+      
+  %tbody
+    - @rooms.each do |room|
+      %tr
+        - if room.day == "monday"
+          %td= "วันจันทร์"
+        - elsif room.day == "tuesday"
+          %td= "วันอังคาร"
+        - elsif room.day == "wednesday"
+          %td= "วันพุธ"
+        - elsif room.day == "thursday"
+          %td= "วันพฤหัสบดี"
+        - elsif room.day == "friday"
+          %td= "วันศุกร์"
+        - elsif room.day ==  "saturday"
+          %td= "วันเสาร์"
+        - else 
+          %td= "วันอาทิตย์"  
+        - if room.first == "free"
+          %td= "ว่าง"
+        - else
+          %td= "ไม่ว่าง"
+        - if room.second == "free"
+          %td= "ว่าง"
+        - else
+          %td= "ไม่ว่าง"
+        - if room.third == "free"
+          %td= "ว่าง"
+        - else
+          %td= "ไม่ว่าง"
+        - if room.fourth == "free"
+          %td= "ว่าง"
+        - else
+          %td= "ไม่ว่าง"
+        - if room.fifth == "free"
+          %td= "ว่าง"
+        - else
+          %td= "ไม่ว่าง"
+        - if room.sixth == "free"
+          %td= "ว่าง"
+        - else
+          %td= "ไม่ว่าง"
+        - if room.seventh == "free"
+          %td= "ว่าง"
+        - else
+          %td= "ไม่ว่าง"
+        - if room.eighth == "free"
+          %td= "ว่าง"
+        - else
+          %td= "ไม่ว่าง"
+        
+%h5 ***** "ไม่ว่าง" คือณ.เวลานั้นๆมีการเรียนการสอน  "ว่าง" คือณ.เวลานั้นๆไม่มีการเรียนการสอน
+%br 
+%h5 รายชื่ออุปกรณ์ประจำห้อง : #{@room_tool.roomname}
+%p เครื่องขยายเสียง (amplifier) #{@room_tool.amplifier} เครื่อง
+%p ไมโครโฟน (microphone) #{@room_tool.microphone} เครื่อง
+%p เครื่องคอมพิวเตอร์ (computer) #{@room_tool.computer} เครื่อง
+%p โอเวอร์เฮด โปรเจกเตอร์ (overhead_projector) #{@room_tool.overhead_projector} เครื่อง
+%p เครื่องฉาย LCD (lcd_projector) #{@room_tool.lcd_projector} เครื่อง
+%p โทรทัศน์ (television) #{@room_tool.television} เครื่อง
+%p เครื่องเล่นและบันทึกเสียง (voice_recorder) #{@room_tool.voice_recorder} เครื่อง
+%p ครื่องเล่นวิดีโอเทป (video_recorder) #{@room_tool.video_recorder} เครื่อง
+%p เครื่องวิชั่วไรเซอร์ (visualizer) #{@room_tool.visualizer} เครื่อง
+%p ลำโพง (loudspeaker) #{@room_tool.loudspeaker} เครื่อง
+%br
+= link_to "แก้ไขข้อมูลห้อง #{@droom.roomname}", edit_room_path(@droom)
+===========================================
+= link_to "ลบข้อมูลห้อง #{@droom.roomname}", room_path(@droom), method: :delete, data: { confirm: 'คุณต้องการลบข้อมูลนี้ใช่หรือไม่?' }

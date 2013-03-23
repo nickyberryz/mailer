@@ -1,0 +1,11 @@
+%h3 กรุณากรอก username และ password สำหรับผู้ดูแลระบบ
+
+= form_tag submit_staffs_path, :method => :submit do
+
+  = label :staff,:username,'Username'
+  = text_field :staff, 'username'
+
+  = label :staff,:password, 'Password'
+  = password_field :staff, 'password'
+  %br
+  = submit_tag 'เข้าสู่ระบบ'

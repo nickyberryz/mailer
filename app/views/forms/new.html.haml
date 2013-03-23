@@ -1,0 +1,100 @@
+%center
+  %img{:alt => "logo", :src => "/images/Engtu.jpg"}/
+  %br
+  %br
+  %h3 แบบฟอร์มการขอใช้ห้อง คณะวิศวกรรมศาสตร์ 
+%br
+= form_tag forms_path do
+  สถานะ :
+  = succeed "Teacher" do
+    %input{:name => 'form[position][teacher]', :type => "checkbox", :value => "teacher"}/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = succeed "Official" do
+    %input{:name => 'form[position][official]', :type => "checkbox", :value => "official"}/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = succeed "Student" do
+    %input{:name => 'form[position][student]', :type => "checkbox", :value => "student"}/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = succeed "Other" do
+    %input{:name => 'form[position][other]', :type => "checkbox", :value => "other"}/
+  %br
+  %br
+  ชื่อจริง :
+  %input{:name => 'form[name]', :type => "text"}/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  นามสกุล &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+  %input{:name => "form[surname]", :type => "text"}/
+  %br
+  สังกัด &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+  %input{:name => "form[institution]", :type => "text"}/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  เบอร์โทรศัพท์&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+  %input{:name => "form[tel]", :type => "text"}/
+  %br
+  Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+  %input{:name => "form[email]", :type => "text"}/
+  %br
+  มีความประสงค์จะขอใช้&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  %input{:name => "form[roomtype]", :type => "text", :value => "#{@this_type}" ,:readonly => "readonly"}/
+  
+  %br
+  ห้อง ENGR&nbsp :
+  %input{:name => "form[roomname]", :type => "text", :value => "#{@room.roomname}",:readonly => "readonly"}/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ในวันที่&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+  %input{:name => "form[date_to_reserve]", :type => "date", :value => "#{@date_select}",:readonly => "readonly"}/
+
+  %br
+  เวลา&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+  %input{:name => "form[start_time]", :type => "text" ,:value => "#{@starttime}",:readonly => "readonly"}/
+  น.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ถึงเวลา&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+  %input{:name => "form[finish_time]", :type => "text",:value => "#{@endtime}",:readonly => "readonly"}/
+  น.
+  %br 
+  เพื่อใช้ใน &nbsp;&nbsp;&nbsp;:
+  %input{:name => "form[because]", :type => "text"}/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;วิชา/เรื่อง&nbsp;&nbsp;&nbsp;:
+  %input{:name => "form[subject]", :type => "text"}/
+  %br
+  ผู้เข้าร่วม&nbsp;&nbsp;ประชุม/สัมนา/ฟังบรรยาย&nbsp;&nbsp;จำนวน:&nbsp;&nbsp;&nbsp;
+  %input{:name => "form[amount_of_people]", :type => "text"}/
+  คน
+  %br
+  %br
+  **********************************************************************************************************************************************************
+  %br
+  %br
+  %h4 อุปกรณ์โสตฯ ที่ต้องการ
+  %br
+  = succeed "เครื่องเล่นวิดีโอเทป" do
+    %input{:name => "form[require_tool][video_recorder]", :type => "checkbox", :value => "video_recorder"}/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = succeed "เครื่องเล่นและบันทึกเสียง" do
+    %input{:name => "form[require_tool][voice_recorder]", :type => "checkbox", :value => "voice_recorder"}/
+  %br
+  = succeed "เครื่องฉายโอเวอร์เฮด" do
+    %input{:name => "form[require_tool][overhead_projector]", :type => "checkbox", :value => "overhead_projector"}/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = succeed "visualizer" do
+    %input{:name => "form[require_tool][visualizer]", :type => "checkbox", :value => "visualizer"}/
+  %br
+  = succeed "microphone" do
+    %input{:name => "form[require_tool][microphone]", :type => "checkbox", :value => "microphone"}/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = succeed "โทรทัศน์" do
+    %input{:name => "form[require_tool][television]", :type => "checkbox", :value => "television"}/
+  %br
+  = succeed "เครื่องฉาย LCD" do
+    %input{:name => "form[require_tool][lcd_projector]", :type => "checkbox", :value => "lcd_projector"}/
+  = succeed "โน้ตบุ๊ค" do
+    %input{:name => "form[require_tool][notebook]", :type => "checkbox", :value => "notebook"}/
+
+  %br
+  %br
+  %br
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = submit_tag 'submit'
+
+
+
